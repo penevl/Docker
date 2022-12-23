@@ -13,8 +13,6 @@ services:
       WEBUI_PORT: ${QBT_WEB_PORT}
     volumes:
       - ${BASE_PATH}/config/qbittorent:/config
-      - ${BASE_PATH}/downloads/tvseries:/downloads/tvseries
-      - ${BASE_PATH}/downloads/movies:/downloads/movies
       - ${BASE_PATH}/downloads:/downloads
 
     ports:
