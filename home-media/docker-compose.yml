@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+
+  qbittorent:
+    container_name: qbittorent
+    image: lscr.io/linuxserver/qbittorrent:latest
+    restart: always
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: ${TIMEZONE}
+      WEBUI_PORT: ${QBT_WEB_PORT}
+    volumes:
+      - ${BASE_PATH}/config/qbittorent:/config
+      - ${BASE_PATH}/downloads/tvseries:/downloads/tvseries
+      - ${BASE_PATH}/downloads/movies:/downloads/movies
+      - ${BASE_PATH}/downloads:/downloads
+
+    ports:
+      - ${QBT_WEB_PORT}:8080 # Web UI
+      - 6881:6881 # TCP Connection port
+      - 6881:6881/udp # UDP Connection port
+
+  jellyfin:
+    container_name: jellyfin
+    image: lscr.io/linuxserver/jellyfin:latest
+    depends_on:
+      - qbittorent
+    restart: always
+    environment:
+       PUID: 1000
+       PGID: 1000
+       TZ: ${TIMEZONE}
+    volumes:
+      - ${BASE_PATH}/config/jellyfin/library:/config # Jellyfin data storage location. This can grow very large, 50gb+ is likely for a large collection.
+      - ${BASE_PATH}/downloads/tvseries:/data/tvshows 
+      - ${BASE_PATH}/downloads/movies:/data/movies
+    ports:
+      - 8096:8096 # HTTP Web UI
+      - 8920:8920 # HTTPS Web UI - Optional
+      - 7359:7359/udp # Allows clients to discover jellyfin on the local network - Optional
+      - 1900:1900/udp # Service discovery used by DNLA and clients - Optional
