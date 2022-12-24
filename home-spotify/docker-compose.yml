@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+
+  navidrome:
+    container_name: navidrome
+    image: deluan/navidrome
+    restart: always
+    volumes:
+      - ${BASE_PATH}/config/navidrome:/data
+      - ${BASE_PATH}/music:/music:ro
+    ports:
+      - ${NAVIDROME_PORT}:4533
+
+  yt-dlp:
+    container_name: yt-dlp
+    image: marcobaobao/yt-dlp-webui
+    restart: always
+    volumes:
+      - ${BASE_PATH}/music:/usr/src/yt-dlp-webui/downloads
+    ports:
+      - ${YTDLP_PORT}:3022
