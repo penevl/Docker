@@ -6,6 +6,9 @@ services:
     container_name: navidrome
     image: deluan/navidrome
     restart: always
+    environment:
+      PUID: 1000
+      PGID: 1000
     volumes:
       - ${BASE_PATH}/config/navidrome:/data
       - ${BASE_PATH}/music:/music:ro
@@ -16,6 +19,9 @@ services:
     container_name: yt-dlp
     image: marcobaobao/yt-dlp-webui
     restart: always
+    environment:
+      PUID: 1000
+      PGID: 1000
     volumes:
       - ${BASE_PATH}/music:/usr/src/yt-dlp-webui/downloads
     ports:
