@@ -49,7 +49,7 @@ services:
       GUID: 1000
       PGID: 1000
     volumes:
-    - ${BASE_PATH}/grafana:/var/lib/grafana
+      - ${BASE_PATH}/grafana:/var/lib/grafana
     ports:
       - ${GRAFANA_PORT}:3000
     networks:
