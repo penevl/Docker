@@ -25,6 +25,7 @@ scrape_configs:
       __path__: /var/log/*log
 
 # Docker logging
+# Make sure you also have the loki Docker driver installed
 - job_name: docker 
   pipeline_stages:
    - docker: {}
