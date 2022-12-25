@@ -23,3 +23,12 @@ scrape_configs:
     labels:
       job: varlogs
       __path__: /var/log/*log
+
+# Docker logging
+- job_name: docker 
+  pipeline_stages:
+   - docker: {}
+  static_configs:
+   - labels:
+       job: docker
+       __path__: /var/lib/docker/containers/*/*-json.log
