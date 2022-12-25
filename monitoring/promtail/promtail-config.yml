@@ -1,0 +1,25 @@
+# This is based on a tutorial made by Techno Tim on youtube and his blog
+# Blog post can be found below
+# https://docs.technotim.live/posts/grafana-loki/
+
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+# Make sure the port here is the exact same as what is in the .env file for loki
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+
+# local machine logs
+- job_name: local
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: varlogs
+      __path__: /var/log/*log
