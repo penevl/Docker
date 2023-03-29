@@ -1,7 +1,7 @@
 # Monitoring instructions
 1. Pick out a suitable location where all the data for the containers can be stored and make that the value for `BASE_PATH` in the .env file.
 2. In that base location create 2 folders one named `loki` and the other `promtail`.
-3. In the promtail dir paste the [promtail-config.yml](http://git.penevl.org/elduko/Docker/src/branch/main/monitoring/promtail/promtail-config.yml) file and in the `loki` dir place the [loki-config.yml](http://git.penevl.org/elduko/Docker/src/branch/main/monitoring/loki/loki-config.yml) file.
+3. In the promtail dir paste the [promtail-config.yml](https://github.com/penevl/Docker/blob/main/monitoring/promtail/promtail-config.yml) file and in the `loki` dir place the [loki-config.yml](https://github.com/penevl/Docker/blob/main/monitoring/loki/loki-config.yml) file.
 4. Install the loki driver for Docker with the command.
 ```
 docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
