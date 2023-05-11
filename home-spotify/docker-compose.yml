@@ -25,4 +25,4 @@ services:
     volumes:
       - ${BASE_PATH}/music/fix:/usr/src/yt-dlp-webui/downloads
     ports:
-      - ${YTDLP_PORT}:3022
+      - ${YTDLP_PORT}:3033
