@@ -23,6 +23,6 @@ services:
       PUID: 1000
       PGID: 1000
     volumes:
-      - ${BASE_PATH}/music/fix:/usr/src/yt-dlp-webui/downloads
+      - ${BASE_PATH}/music/fix:/downloads
     ports:
       - ${YTDLP_PORT}:3033
