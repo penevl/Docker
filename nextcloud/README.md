@@ -1,0 +1,3 @@
+# Setting up nextcloud to use database
+
+To make nextcloud use the mariadb databse after first launch choose an admin account user name and password. Then click on the `Storage & database` dropdown button and select `MySQL/MariaDB`. For `Database user` put the value of whatever you set the `USER` variable in the `.env` file and for the `Database password` put the value of what you set  the `PASSWD` variable. For `Database name` put `nextcloud`(case sensitive) and for `Database host` put `database:3306`.

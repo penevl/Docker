@@ -1,0 +1,38 @@
+  version: "3.8"
+
+  services:
+    
+    nextcloud:
+      image: linuxserver/nextcloud:latest
+      container_name: nextcloud
+      depends_on:
+       - database
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=${TIMEZONE}
+      volumes:
+        - ${BASE_PATH}/nextcloud/appdata:/config
+        - ${BASE_PATH}/nextcloud/data:/data
+      networks:
+        - nextcloud_net
+      ports:
+        - ${PORT}:443
+      restart: unless-stopped
+    
+    database:
+      image: mariadb
+      container_name: mariadb
+      environment:
+        - MARIADB_USER=${USER}
+        - MARIADB_PASSWORD=${PASSWD}
+        - MARIADB_ROOT_PASSWORD=${ROOT_PASSWD}
+        - MARIADB_DATABASE=nextcloud
+      volumes:
+        - ${BASE_PATH}/db:/var/lib/mysql
+      networks:
+        - nextcloud_net
+      restart: unless-stopped
+
+  networks:
+    nextcloud_net: 
