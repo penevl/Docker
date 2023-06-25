@@ -16,7 +16,7 @@ services:
       - ${BASE_PATH}/downloads:/downloads
 
     ports:
-      - ${QBT_WEB_PORT}:8080 # Web UI
+      - ${QBT_WEB_PORT}:${QBT_WEB_PORT} # Web UI
       - 6881:6881 # TCP Connection port
       - 6881:6881/udp # UDP Connection port
 
@@ -35,7 +35,6 @@ services:
       - ${BASE_PATH}/downloads/tvseries:/data/tvshows 
       - ${BASE_PATH}/downloads/movies:/data/movies
     ports:
-      - 8096:8096 # HTTP Web UI
-      - 8920:8920 # HTTPS Web UI - Optional
+      - ${JELLYFIN_PORT}:8096 # HTTP Web UI
       - 7359:7359/udp # Allows clients to discover jellyfin on the local network - Optional
       - 1900:1900/udp # Service discovery used by DNLA and clients - Optional

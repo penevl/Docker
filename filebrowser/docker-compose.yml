@@ -10,8 +10,8 @@ services:
       PUID: 1000
       PGID: 1000
     volumes:
-      - /home/elduko-server/hdd:/srv
-      - /home/elduko-server/hdd/filebrowser/filebrowser.db:/database.db
+      - /exposed-dir:/srv
+      - /exposed-dir/filebrowser.db:/database.db
     ports:
       - 8080:80
     security_opt:

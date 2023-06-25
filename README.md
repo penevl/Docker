@@ -1,6 +1,6 @@
 # Docker
 
-A repository to keep all my docker-compose files and/or docker stacks.
+A repository to keep all my production ready docker stacks and their respective .env.
 
 ## Available stacks
 1. [home-media](https://github.com/penevl/Docker/tree/main/home-media) - A stack consisting of [jellyfin](https://hub.docker.com/r/linuxserver/jellyfin) and [qbittorent](https://hub.docker.com/r/linuxserver/qbittorrent). Made to be deployed with docker-compose using a .env file
